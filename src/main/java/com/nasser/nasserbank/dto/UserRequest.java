@@ -14,10 +14,9 @@ public class UserRequest {
     private String lastName;
     private String otherName;
     private String gender;
-    private int address;
+    private String address;
     private String stateOfOrigin;
     private String email;
     private String phoneNumber;
-    private String alternatePhoneNumber;
-    private String status;
+    private String alternativePhoneNumber;
 }
