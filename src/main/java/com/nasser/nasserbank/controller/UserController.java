@@ -1,6 +1,7 @@
 package com.nasser.nasserbank.controller;
 
 import com.nasser.nasserbank.dto.BankResponse;
+import com.nasser.nasserbank.dto.CreditDebitRequest;
 import com.nasser.nasserbank.dto.EnquiryRequest;
 import com.nasser.nasserbank.dto.UserRequest;
 import com.nasser.nasserbank.service.UserService;
@@ -18,13 +19,18 @@ public class UserController {
         return userService.createAccount(userRequest);
     }
 
-    @GetMapping("/balanceEnquiry")
-    public BankResponse balanceEnquiry(@RequestParam EnquiryRequest request) {
+    @GetMapping("balanceEnquiry")
+    public BankResponse balanceEnquiry(@RequestBody EnquiryRequest request) {
         return userService.balanceEnquiry(request);
     }
 
     @GetMapping("nameEnquiry")
     public String nameEnquiry(@RequestBody EnquiryRequest request) {
         return userService.nameEnquiry(request);
+    }
+
+    @PostMapping("credit")
+    public BankResponse creditAccount(@RequestBody CreditDebitRequest request) {
+        return userService.creditAccount(request);
     }
 }
