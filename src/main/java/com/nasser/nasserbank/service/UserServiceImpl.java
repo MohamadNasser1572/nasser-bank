@@ -2,6 +2,7 @@ package com.nasser.nasserbank.service;
 
 import com.nasser.nasserbank.dto.AccountInfo;
 import com.nasser.nasserbank.dto.BankResponse;
+import com.nasser.nasserbank.dto.EmailDetails;
 import com.nasser.nasserbank.dto.UserRequest;
 import com.nasser.nasserbank.entity.User;
 import com.nasser.nasserbank.repository.UserRepository;
@@ -15,6 +16,9 @@ import java.math.BigDecimal;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    EmailService emailService;
 
 
     @Override
@@ -46,6 +50,14 @@ public class UserServiceImpl implements UserService {
                 .status("ACTIVE")
                 .build();
         User savedUser = userRepository.save(newUser);
+        //send email alert
+        EmailDetails emailDetails = EmailDetails.builder()
+                .recipient(savedUser.getEmail())
+                .subject("ACCOUNT CREATION")
+                .messageBody("Congratulations, your account have been successfully created!\nYour account details: " +
+                        "Account Name: " + savedUser.getFirstName() + " " + savedUser.getLastName() + " " + savedUser.getOtherName() + "\nAccount Number: " + savedUser.getAccountNumber())
+                .build();
+        emailService.sendEmailAlert(emailDetails);
         return BankResponse.builder()
                 .responseCode(AccountUtils.ACCOUNT_CREATION_SUCCESS)
                 .responseMessage(AccountUtils.ACCOUNT_CREATION_MESSAGE)
