@@ -1,9 +1,6 @@
 package com.nasser.nasserbank.service;
 
-import com.nasser.nasserbank.dto.BankResponse;
-import com.nasser.nasserbank.dto.CreditDebitRequest;
-import com.nasser.nasserbank.dto.EnquiryRequest;
-import com.nasser.nasserbank.dto.UserRequest;
+import com.nasser.nasserbank.dto.*;
 
 public interface UserService {
     BankResponse createAccount(UserRequest userRequest);
@@ -11,4 +8,5 @@ public interface UserService {
     String nameEnquiry(EnquiryRequest request);
     BankResponse creditAccount(CreditDebitRequest request);
     BankResponse debitAccount(CreditDebitRequest request);
+    BankResponse transfer(TransferRequest request);
 }

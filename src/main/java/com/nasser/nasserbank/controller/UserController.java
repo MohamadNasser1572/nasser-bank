@@ -1,9 +1,6 @@
 package com.nasser.nasserbank.controller;
 
-import com.nasser.nasserbank.dto.BankResponse;
-import com.nasser.nasserbank.dto.CreditDebitRequest;
-import com.nasser.nasserbank.dto.EnquiryRequest;
-import com.nasser.nasserbank.dto.UserRequest;
+import com.nasser.nasserbank.dto.*;
 import com.nasser.nasserbank.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +34,10 @@ public class UserController {
     @PostMapping("debit")
     public BankResponse debitAccount(@RequestBody CreditDebitRequest request) {
         return userService.debitAccount(request);
+    }
+
+    @PostMapping("transfer")
+    public BankResponse transfer(@RequestBody TransferRequest request) {
+        return userService.transfer(request);
     }
 }
