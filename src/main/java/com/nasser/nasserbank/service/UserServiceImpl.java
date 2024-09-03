@@ -221,7 +221,7 @@ public class UserServiceImpl implements UserService {
         userRepository.save(destinationAccountUser);
         EmailDetails creditAlert = EmailDetails.builder()
                 .subject("CREDIT ALERT")
-                .recipient(sourceAccountUser.getEmail())
+                .recipient(destinationAccountUser.getEmail())
                 .messageBody("The sum of " + request.getAmount()
                         + " has been sent from your account from" + sourceUsername + ". Your current balance is: "
                         + sourceAccountUser.getAccountBalance())
@@ -230,7 +230,7 @@ public class UserServiceImpl implements UserService {
 
         TransactionDto transactionDto = TransactionDto.builder()
                 .accountNumber(destinationAccountUser.getAccountNumber())
-                .transactionType("CREDIT")
+                .transactionType("DEBIT")
                 .amount(request.getAmount())
                 .build();
 
