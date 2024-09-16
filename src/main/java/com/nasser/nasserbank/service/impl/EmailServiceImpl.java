@@ -1,6 +1,7 @@
-package com.nasser.nasserbank.service;
+package com.nasser.nasserbank.service.impl;
 
 import com.nasser.nasserbank.dto.EmailDetails;
+import com.nasser.nasserbank.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.MailException;

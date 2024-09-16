@@ -1,8 +1,9 @@
-package com.nasser.nasserbank.service;
+package com.nasser.nasserbank.service.impl;
 
 import com.nasser.nasserbank.dto.TransactionDto;
 import com.nasser.nasserbank.entity.Transaction;
 import com.nasser.nasserbank.repository.TransactionRepository;
+import com.nasser.nasserbank.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
